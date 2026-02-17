@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Rudra Potghan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/blog.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="../index.html" class="nav-logo">RP</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="certifications.html">Certifications</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- VIEWS: List vs Reader vs Editor -->
+  <div id="view-list">
+    <div class="page-header">
+      <div class="container">
+        <div class="section-label">// INFOSEC WRITEUPS</div>
+        <h1>Blog</h1>
+        <p class="page-header-sub">CTF writeups, security research & tools — by Rudra Potghan.</p>
+      </div>
+    </div>
+
+    <div class="blog-toolbar">
+      <div class="container blog-toolbar-inner">
+        <div class="blog-filter" id="blogFilter">
+          <button class="filter-btn active" data-tag="all">All</button>
+          <button class="filter-btn" data-tag="CTF">CTF</button>
+          <button class="filter-btn" data-tag="VAPT">VAPT</button>
+          <button class="filter-btn" data-tag="OSINT">OSINT</button>
+          <button class="filter-btn" data-tag="Tools">Tools</button>
+          <button class="filter-btn" data-tag="Research">Research</button>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button class="btn" id="blogLoginBtn">Admin Login</button>
+          <button class="btn btn-solid" id="newPostBtn" style="display:none;">+ New Post</button>
+          <button class="btn btn-danger" id="blogLogoutBtn" style="display:none;">Logout</button>
+        </div>
+      </div>
+    </div>
+
+    <main class="container blog-main">
+      <div class="posts-grid" id="postsGrid">
+        <!-- Rendered by JS -->
+      </div>
+      <div class="blog-empty" id="blogEmpty" style="display:none;">
+        <p>// No posts yet. Check back soon.</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- READER VIEW -->
+  <div id="view-reader" style="display:none;">
+    <div class="reader-header">
+      <div class="container">
+        <button class="btn reader-back" id="readerBack">← Back to Blog</button>
+      </div>
+    </div>
+    <article class="container reader-article" id="readerContent">
+      <!-- populated by JS -->
+    </article>
+  </div>
+
+  <!-- EDITOR VIEW -->
+  <div id="view-editor" style="display:none;">
+    <div class="editor-topbar">
+      <div class="container editor-topbar-inner">
+        <button class="btn" id="editorBack">← Cancel</button>
+        <span class="editor-status" id="editorStatus">Draft</span>
+        <div style="display:flex; gap:10px;">
+          <button class="btn" id="savePostBtn">Save Draft</button>
+          <button class="btn btn-solid" id="publishPostBtn">Publish</button>
+          <button class="btn btn-danger" id="deletePostBtn" style="display:none;">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container editor-wrap">
+      <input type="hidden" id="editPostId" />
+
+      <input class="editor-title" id="postTitle" type="text" placeholder="Post Title..." />
+
+      <div class="editor-meta-row">
+        <input class="editor-meta-input" id="postTag" type="text" placeholder="Tag (CTF, VAPT, OSINT...)" />
+        <input class="editor-meta-input" id="postCoverUrl" type="text" placeholder="Cover image URL (optional)" />
+        <input class="editor-meta-input" id="postExcerpt" type="text" placeholder="Short excerpt..." />
+      </div>
+
+      <!-- TOOLBAR -->
+      <div class="editor-toolbar" id="editorToolbar">
+        <button class="tb-btn" data-cmd="bold" title="Bold">B</button>
+        <button class="tb-btn tb-italic" data-cmd="italic" title="Italic">I</button>
+        <button class="tb-btn tb-under" data-cmd="underline" title="Underline">U</button>
+        <div class="tb-sep"></div>
+        <button class="tb-btn" data-cmd="formatBlock" data-val="h2" title="Heading 2">H2</button>
+        <button class="tb-btn" data-cmd="formatBlock" data-val="h3" title="Heading 3">H3</button>
+        <button class="tb-btn" data-cmd="formatBlock" data-val="p" title="Paragraph">P</button>
+        <div class="tb-sep"></div>
+        <button class="tb-btn" data-cmd="insertUnorderedList" title="Bullet List">• List</button>
+        <button class="tb-btn" data-cmd="insertOrderedList" title="Numbered List">1. List</button>
+        <div class="tb-sep"></div>
+        <button class="tb-btn" data-action="insertCode" title="Code Block">&lt;/&gt; Code</button>
+        <button class="tb-btn" data-action="insertImage" title="Insert Image">⬛ Image</button>
+        <button class="tb-btn" data-action="insertLink" title="Insert Link">🔗 Link</button>
+        <div class="tb-sep"></div>
+        <button class="tb-btn" data-cmd="formatBlock" data-val="blockquote" title="Quote">" Quote</button>
+        <button class="tb-btn" data-cmd="removeFormat" title="Clear">✕ Clear</button>
+      </div>
+
+      <!-- EDITOR AREA -->
+      <div class="editor-body" id="editorBody" contenteditable="true">
+        <p>Start writing your post here...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGIN MODAL -->
+  <div class="modal-overlay" id="blogLoginModal">
+    <div class="modal">
+      <button class="modal-close" id="closeBlogLogin">✕</button>
+      <h2>Admin Access</h2>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="blogPasswordInput" placeholder="Enter admin password" />
+      </div>
+      <button class="btn btn-solid" id="submitBlogLogin" style="width:100%">Authenticate →</button>
+      <p style="margin-top:16px; font-size:.72rem; font-family:var(--font-mono); color:var(--text-dimmer); letter-spacing:1px;">
+        Default: <code style="color:var(--accent)">rudra2025</code> — change in js/blog.js
+      </p>
+    </div>
+  </div>
+
+  <!-- Insert image modal -->
+  <div class="modal-overlay" id="imgModal">
+    <div class="modal" style="max-width:440px;">
+      <button class="modal-close" id="closeImgModal">✕</button>
+      <h2>Insert Image</h2>
+      <div class="form-group">
+        <label>Image URL</label>
+        <input type="url" id="imgUrl" placeholder="https://..." />
+      </div>
+      <div class="form-group">
+        <label>Alt Text</label>
+        <input type="text" id="imgAlt" placeholder="Image description" />
+      </div>
+      <button class="btn btn-solid" id="confirmImg" style="width:100%">Insert Image</button>
+    </div>
+  </div>
+
+  <!-- Insert link modal -->
+  <div class="modal-overlay" id="linkModal">
+    <div class="modal" style="max-width:440px;">
+      <button class="modal-close" id="closeLinkModal">✕</button>
+      <h2>Insert Link</h2>
+      <div class="form-group">
+        <label>URL</label>
+        <input type="url" id="linkUrl" placeholder="https://..." />
+      </div>
+      <div class="form-group">
+        <label>Link Text</label>
+        <input type="text" id="linkText" placeholder="Display text" />
+      </div>
+      <button class="btn btn-solid" id="confirmLink" style="width:100%">Insert Link</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <footer class="footer">
+    <p>© 2025 Rudra Potghan · Built with passion &amp; curiosity</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/blog.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certifications — Rudra Potghan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/certifications.css" />
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <a href="../index.html" class="nav-logo">RP</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="certifications.html" class="active">Certifications</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="section-label">// CERTIFICATIONS</div>
+      <h1>Verified Credentials</h1>
+      <p class="page-header-sub">Certifications earned across cybersecurity, ML &amp; networking domains.</p>
+    </div>
+  </div>
+
+  <div class="cert-toolbar">
+    <div class="container cert-toolbar-inner">
+      <span class="cert-count" id="certCount">Loading...</span>
+      <div class="cert-toolbar-actions">
+        <button class="btn" id="loginBtn">Admin Login</button>
+        <button class="btn btn-solid" id="addCertBtn" style="display:none;">+ Add Certification</button>
+        <button class="btn btn-danger" id="logoutBtn" style="display:none;">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="container cert-main">
+    <div class="certs-grid" id="certsGrid"></div>
+    <div class="cert-empty" id="certEmpty" style="display:none;"><p>// No certifications yet.</p></div>
+  </main>
+
+  <!-- DETAIL MODAL -->
+  <div class="modal-overlay" id="certDetailModal">
+    <div class="modal cert-detail-modal">
+      <button class="modal-close" id="closeCertDetail">✕</button>
+      <div id="certDetailBody"></div>
+    </div>
+  </div>
+
+  <!-- LOGIN MODAL -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal">
+      <button class="modal-close" id="closeLogin">✕</button>
+      <h2>Admin Access</h2>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="passwordInput" placeholder="Enter admin password" />
+      </div>
+      <button class="btn btn-solid" id="submitLogin" style="width:100%">Authenticate →</button>
+      <p style="margin-top:14px;font-size:.7rem;font-family:var(--font-mono);color:var(--text-dimmer);letter-spacing:1px;">
+        Default: <code style="color:var(--accent3)">rudra2025</code> · change in js/certifications.js
+      </p>
+    </div>
+  </div>
+
+  <!-- ADD / EDIT MODAL -->
+  <div class="modal-overlay" id="addCertModal">
+    <div class="modal" style="max-width:620px;">
+      <button class="modal-close" id="closeAddCert">✕</button>
+      <h2 id="certFormTitle">Add Certification</h2>
+      <input type="hidden" id="editCertId" />
+
+      <div class="form-group">
+        <label>Certification Name *</label>
+        <input type="text" id="certName" placeholder="e.g. Jr. Penetration Tester Path" />
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="form-group">
+          <label>Issuing Organization *</label>
+          <input type="text" id="certIssuer" placeholder="e.g. TryHackMe" />
+        </div>
+        <div class="form-group">
+          <label>Year Earned *</label>
+          <input type="text" id="certYear" placeholder="e.g. 2026" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Category</label>
+        <select id="certCategory">
+          <option value="Security">Security</option>
+          <option value="Networking">Networking</option>
+          <option value="Machine Learning">Machine Learning</option>
+          <option value="Cloud">Cloud</option>
+          <option value="Development">Development</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Credential Link (URL)</label>
+        <input type="url" id="certLink" placeholder="https://tryhackme.com/..." />
+      </div>
+
+      <!-- FILE UPLOAD -->
+      <div class="form-group">
+        <label>Upload Certificate File</label>
+        <div class="file-drop-zone" id="certFileZone">
+          <input type="file" id="certFile" accept=".pdf,.jpg,.jpeg,.png,.webp,.gif" />
+          <span class="file-drop-icon">📎</span>
+          <div class="file-drop-text">Drop file or click to upload</div>
+          <div class="file-drop-sub">PDF · JPG · PNG · WEBP · max 5 MB</div>
+        </div>
+        <div class="file-preview" id="certFilePreview" style="display:none;">
+          <div class="file-preview-icon" id="certFilePreviewIcon">📄</div>
+          <div class="file-preview-info">
+            <div class="file-preview-name" id="certFileName">—</div>
+            <div class="file-preview-size" id="certFileSize">—</div>
+          </div>
+          <button class="file-preview-remove" id="certFileRemove" title="Remove">✕</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>— or paste a direct image/PDF URL</label>
+        <input type="url" id="certImage" placeholder="https://... direct link to your certificate" />
+      </div>
+
+      <div class="form-group">
+        <label>Short Description</label>
+        <textarea id="certDesc" rows="3" placeholder="Brief description of what this certification covers..."></textarea>
+      </div>
+
+      <div style="display:flex;gap:12px;">
+        <button class="btn btn-solid" id="saveCertBtn" style="flex:1;">Save Certification</button>
+        <button class="btn btn-danger" id="deleteCertBtn" style="display:none;">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <footer class="footer">
+    <p>© 2025 Rudra Potghan · Built with passion &amp; curiosity</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/certifications.js"></script>
+</body>
+</html>

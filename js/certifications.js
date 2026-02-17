@@ -1,0 +1,391 @@
+/* ===========================
+   CERTIFICATIONS JS
+   Admin password: change ADMIN_PASS below
+=========================== */
+
+const ADMIN_PASS = 'rudra2025'; // ← Change this!
+const STORE_KEY  = 'rp_certs_v2';
+
+// Pre-loaded from resume
+const DEFAULT_CERTS = [
+  {
+    id: 'cert_1', name: 'Jr. Penetration Tester Path', issuer: 'TryHackMe',
+    year: '2026', category: 'Security',
+    link: 'https://tryhackme.com', image: '', fileData: '', fileType: '',
+    desc: 'Comprehensive penetration testing path covering network, web app, and system exploitation fundamentals.'
+  },
+  {
+    id: 'cert_2', name: 'Fundamentals of Deep Learning', issuer: 'NVIDIA',
+    year: '2025', category: 'Machine Learning',
+    link: '', image: '', fileData: '', fileType: '',
+    desc: 'Foundation course on neural networks, CNNs, transfer learning and deployment via NVIDIA frameworks.'
+  },
+  {
+    id: 'cert_3', name: 'Cybersecurity Foundation', issuer: 'Palo Alto Networks',
+    year: '2025', category: 'Security',
+    link: '', image: '', fileData: '', fileType: '',
+    desc: 'Core cybersecurity concepts including threat landscape, network security, and endpoint protection.'
+  },
+  {
+    id: 'cert_4', name: 'Ethical Hacking', issuer: 'NPTEL',
+    year: '2024', category: 'Security',
+    link: '', image: '', fileData: '', fileType: '',
+    desc: 'NPTEL course covering ethical hacking methodologies, tools, and legal frameworks.'
+  },
+  {
+    id: 'cert_5', name: 'Introduction to Cyber Security', issuer: 'TryHackMe',
+    year: '2024', category: 'Security',
+    link: '', image: '', fileData: '', fileType: '',
+    desc: 'Entry-level offensive and defensive security fundamentals on TryHackMe platform.'
+  },
+  {
+    id: 'cert_6', name: 'Introduction to IoT', issuer: 'NPTEL',
+    year: '2024', category: 'Networking',
+    link: '', image: '', fileData: '', fileType: '',
+    desc: 'Overview of Internet of Things architecture, protocols, and security considerations.'
+  }
+];
+
+// ---- STATE ----
+let certs       = [];
+let isAdmin     = false;
+let currentEditId = null;
+let uploadedFileData = ''; // base64
+let uploadedFileType = ''; // mime type
+let uploadedFileName = '';
+
+// ---- INIT ----
+function init() {
+  const stored = storageGet(STORE_KEY);
+  certs = (stored && stored.length > 0) ? stored : DEFAULT_CERTS;
+  if (!stored || stored.length === 0) storageSet(STORE_KEY, certs);
+
+  isAdmin = sessionStorage.getItem('rp_cert_admin') === '1';
+  applyAdminMode();
+  renderCerts();
+  bindEvents();
+}
+
+// ---- RENDER GRID ----
+function renderCerts() {
+  const grid  = document.getElementById('certsGrid');
+  const empty = document.getElementById('certEmpty');
+  const count = document.getElementById('certCount');
+  grid.innerHTML = '';
+  count.textContent = `${certs.length} Certification${certs.length !== 1 ? 's' : ''}`;
+
+  if (certs.length === 0) { empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+
+  certs.forEach(cert => {
+    const hasMedia = cert.fileData || cert.image;
+    const thumbHtml = hasMedia
+      ? buildThumb(cert)
+      : `<div class="cert-card-thumb-placeholder"><span>${escHtml(cert.issuer.substring(0,3).toUpperCase())}</span></div>`;
+
+    const card = document.createElement('div');
+    card.className = 'cert-card';
+    card.dataset.id = cert.id;
+    card.innerHTML = `
+      ${thumbHtml}
+      <div class="cert-card-cat">${escHtml(cert.category)}</div>
+      <div class="cert-card-body">
+        <div class="cert-card-name">${escHtml(cert.name)}</div>
+        <div class="cert-card-issuer">${escHtml(cert.issuer)}</div>
+        ${cert.desc ? `<div class="cert-card-desc">${escHtml(cert.desc)}</div>` : ''}
+      </div>
+      <div class="cert-card-footer">
+        <span class="cert-card-year">${escHtml(cert.year)}</span>
+        <span class="cert-card-view">View Details →</span>
+      </div>
+      <button class="cert-card-edit" data-id="${cert.id}" title="Edit this certification">✏ Edit</button>
+    `;
+
+    card.addEventListener('click', e => {
+      if (e.target.closest('.cert-card-edit')) return;
+      openCertDetail(cert.id);
+    });
+    card.querySelector('.cert-card-edit').addEventListener('click', e => {
+      e.stopPropagation();
+      openEditModal(cert.id);
+    });
+    grid.appendChild(card);
+  });
+}
+
+function buildThumb(cert) {
+  if (cert.fileType === 'application/pdf') {
+    return `<div class="cert-card-thumb-placeholder cert-card-thumb-pdf"><span>PDF</span></div>`;
+  }
+  const src = cert.fileData || cert.image;
+  return `<img class="cert-card-thumb" src="${src}" alt="${escHtml(cert.name)}" loading="lazy" />`;
+}
+
+// ---- DETAIL MODAL ----
+function openCertDetail(id) {
+  const cert = certs.find(c => c.id === id);
+  if (!cert) return;
+
+  let mediaHtml = '';
+  if (cert.fileData && cert.fileType !== 'application/pdf') {
+    mediaHtml = `<img src="${cert.fileData}" alt="${escHtml(cert.name)}" class="cert-detail-img" />`;
+  } else if (cert.image) {
+    mediaHtml = `<img src="${escHtml(cert.image)}" alt="${escHtml(cert.name)}" class="cert-detail-img" />`;
+  } else if (cert.fileData && cert.fileType === 'application/pdf') {
+    mediaHtml = `<div class="cert-pdf-embed"><iframe src="${cert.fileData}" width="100%" height="360" style="border:1px solid var(--border);border-radius:4px;"></iframe></div>`;
+  }
+
+  const adminEdit = isAdmin
+    ? `<button class="btn" id="detailEditBtn" data-id="${cert.id}" style="margin-top:20px;">✏ Edit Certification</button>`
+    : '';
+
+  document.getElementById('certDetailBody').innerHTML = `
+    ${mediaHtml}
+    <span class="cert-detail-cat">${escHtml(cert.category)}</span>
+    <div class="cert-detail-name">${escHtml(cert.name)}</div>
+    <div class="cert-detail-meta">Issued by <strong>${escHtml(cert.issuer)}</strong> · ${escHtml(cert.year)}</div>
+    ${cert.desc ? `<div class="cert-detail-desc">${escHtml(cert.desc)}</div>` : ''}
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+      ${cert.link ? `<a href="${escHtml(cert.link)}" target="_blank" class="cert-detail-link">View Credential ↗</a>` : ''}
+      ${cert.fileData ? `<a href="${cert.fileData}" download="${escHtml(cert.name)}" class="cert-detail-link">⬇ Download File</a>` : ''}
+      ${adminEdit}
+    </div>
+  `;
+
+  const editBtn = document.getElementById('detailEditBtn');
+  if (editBtn) {
+    editBtn.addEventListener('click', () => {
+      closeModal('certDetailModal');
+      openEditModal(cert.id);
+    });
+  }
+  openModal('certDetailModal');
+}
+
+// ---- FILE UPLOAD HANDLING ----
+function setupFileUpload() {
+  const zone   = document.getElementById('certFileZone');
+  const input  = document.getElementById('certFile');
+  const preview= document.getElementById('certFilePreview');
+  const icon   = document.getElementById('certFilePreviewIcon');
+  const name   = document.getElementById('certFileName');
+  const size   = document.getElementById('certFileSize');
+  const remove = document.getElementById('certFileRemove');
+
+  // Drag and drop
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.classList.remove('drag-over');
+    const file = e.dataTransfer.files[0];
+    if (file) handleFile(file);
+  });
+
+  input.addEventListener('change', () => {
+    if (input.files[0]) handleFile(input.files[0]);
+  });
+
+  remove.addEventListener('click', () => {
+    clearFileUpload();
+  });
+
+  function handleFile(file) {
+    if (file.size > 5 * 1024 * 1024) {
+      showToast('File too large (max 5MB)', true);
+      return;
+    }
+    const allowed = ['image/jpeg','image/jpg','image/png','image/webp','image/gif','application/pdf'];
+    if (!allowed.includes(file.type)) {
+      showToast('Unsupported file type', true);
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = e => {
+      uploadedFileData = e.target.result;
+      uploadedFileType = file.type;
+      uploadedFileName = file.name;
+
+      // Show preview
+      zone.style.display = 'none';
+      preview.style.display = 'flex';
+      name.textContent = file.name;
+      size.textContent = formatBytes(file.size);
+
+      if (file.type.startsWith('image/')) {
+        icon.innerHTML = `<img src="${uploadedFileData}" style="width:40px;height:40px;object-fit:cover;border-radius:2px;" />`;
+      } else {
+        icon.textContent = '📄';
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function clearFileUpload() {
+  uploadedFileData = '';
+  uploadedFileType = '';
+  uploadedFileName = '';
+  const zone   = document.getElementById('certFileZone');
+  const preview= document.getElementById('certFilePreview');
+  const input  = document.getElementById('certFile');
+  zone.style.display = 'block';
+  preview.style.display = 'none';
+  if (input) input.value = '';
+  document.getElementById('certFilePreviewIcon').textContent = '📄';
+}
+
+function formatBytes(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024*1024) return (bytes/1024).toFixed(1) + ' KB';
+  return (bytes/(1024*1024)).toFixed(1) + ' MB';
+}
+
+// ---- LOGIN ----
+function bindEvents() {
+  document.getElementById('loginBtn').addEventListener('click', () => openModal('loginModal'));
+  document.getElementById('closeLogin').addEventListener('click', () => closeModal('loginModal'));
+  document.getElementById('submitLogin').addEventListener('click', doLogin);
+  document.getElementById('passwordInput').addEventListener('keydown', e => { if (e.key==='Enter') doLogin(); });
+
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    isAdmin = false;
+    sessionStorage.removeItem('rp_cert_admin');
+    applyAdminMode();
+    renderCerts();
+    showToast('Logged out');
+  });
+
+  document.getElementById('addCertBtn').addEventListener('click', openAddModal);
+  document.getElementById('closeAddCert').addEventListener('click', () => closeModal('addCertModal'));
+  document.getElementById('saveCertBtn').addEventListener('click', saveCert);
+  document.getElementById('deleteCertBtn').addEventListener('click', deleteCert);
+  document.getElementById('closeCertDetail').addEventListener('click', () => closeModal('certDetailModal'));
+
+  setupFileUpload();
+}
+
+function doLogin() {
+  const pw = document.getElementById('passwordInput').value;
+  if (pw === ADMIN_PASS) {
+    isAdmin = true;
+    sessionStorage.setItem('rp_cert_admin', '1');
+    applyAdminMode();
+    renderCerts();
+    closeModal('loginModal');
+    document.getElementById('passwordInput').value = '';
+    showToast('Admin mode enabled 🔥');
+  } else {
+    showToast('Incorrect password', true);
+  }
+}
+
+function applyAdminMode() {
+  document.getElementById('loginBtn').style.display   = isAdmin ? 'none' : '';
+  document.getElementById('addCertBtn').style.display = isAdmin ? '' : 'none';
+  document.getElementById('logoutBtn').style.display  = isAdmin ? '' : 'none';
+  document.body.classList.toggle('admin-mode', isAdmin);
+}
+
+// ---- ADD/EDIT ----
+function openAddModal() {
+  currentEditId = null;
+  clearFileUpload();
+  document.getElementById('certFormTitle').textContent = 'Add Certification';
+  document.getElementById('editCertId').value = '';
+  ['certName','certIssuer','certYear','certLink','certImage','certDesc'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('certCategory').value = 'Security';
+  document.getElementById('deleteCertBtn').style.display = 'none';
+  openModal('addCertModal');
+}
+
+function openEditModal(id) {
+  const cert = certs.find(c => c.id === id);
+  if (!cert) return;
+  currentEditId = id;
+  clearFileUpload();
+
+  document.getElementById('certFormTitle').textContent = 'Edit Certification';
+  document.getElementById('editCertId').value  = id;
+  document.getElementById('certName').value    = cert.name;
+  document.getElementById('certIssuer').value  = cert.issuer;
+  document.getElementById('certYear').value    = cert.year;
+  document.getElementById('certCategory').value= cert.category;
+  document.getElementById('certLink').value    = cert.link || '';
+  document.getElementById('certImage').value   = cert.image || '';
+  document.getElementById('certDesc').value    = cert.desc || '';
+  document.getElementById('deleteCertBtn').style.display = '';
+
+  // Show existing file if any
+  if (cert.fileData) {
+    uploadedFileData = cert.fileData;
+    uploadedFileType = cert.fileType || '';
+    uploadedFileName = cert.fileName || 'Existing file';
+
+    const zone   = document.getElementById('certFileZone');
+    const preview= document.getElementById('certFilePreview');
+    const icon   = document.getElementById('certFilePreviewIcon');
+    zone.style.display = 'none';
+    preview.style.display = 'flex';
+    document.getElementById('certFileName').textContent = cert.fileName || 'Existing file';
+    document.getElementById('certFileSize').textContent = 'Saved';
+    if (cert.fileType && cert.fileType.startsWith('image/')) {
+      icon.innerHTML = `<img src="${cert.fileData}" style="width:40px;height:40px;object-fit:cover;border-radius:2px;" />`;
+    } else {
+      icon.textContent = '📄';
+    }
+  }
+
+  openModal('addCertModal');
+}
+
+function saveCert() {
+  const name   = document.getElementById('certName').value.trim();
+  const issuer = document.getElementById('certIssuer').value.trim();
+  const year   = document.getElementById('certYear').value.trim();
+  if (!name || !issuer || !year) { showToast('Name, issuer & year are required', true); return; }
+
+  const data = {
+    name, issuer, year,
+    category : document.getElementById('certCategory').value,
+    link     : document.getElementById('certLink').value.trim(),
+    image    : document.getElementById('certImage').value.trim(),
+    desc     : document.getElementById('certDesc').value.trim(),
+    fileData : uploadedFileData || (currentEditId ? (certs.find(c=>c.id===currentEditId)||{}).fileData||'' : ''),
+    fileType : uploadedFileType || (currentEditId ? (certs.find(c=>c.id===currentEditId)||{}).fileType||'' : ''),
+    fileName : uploadedFileName || (currentEditId ? (certs.find(c=>c.id===currentEditId)||{}).fileName||'' : ''),
+  };
+
+  if (currentEditId) {
+    const idx = certs.findIndex(c => c.id === currentEditId);
+    certs[idx] = { ...certs[idx], ...data };
+    showToast('Certification updated 🔥');
+  } else {
+    certs.push({ id: 'cert_' + Date.now(), ...data });
+    showToast('Certification added 🔥');
+  }
+
+  storageSet(STORE_KEY, certs);
+  renderCerts();
+  closeModal('addCertModal');
+}
+
+function deleteCert() {
+  if (!currentEditId) return;
+  if (!confirm('Delete this certification?')) return;
+  certs = certs.filter(c => c.id !== currentEditId);
+  storageSet(STORE_KEY, certs);
+  renderCerts();
+  closeModal('addCertModal');
+  showToast('Certification deleted');
+}
+
+// ---- UTILS ----
+function escHtml(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+init();
