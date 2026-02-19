@@ -8,7 +8,7 @@ const STORE_KEY  = 'rp_certs_v2';
 
 // Pre-loaded from resume
 const DEFAULT_CERTS = [
-  // Security Certifications
+  // Security Certifications - 2026
   {
     id: 'cert_1',
     name: 'Jr. Penetration Tester Path',
@@ -22,7 +22,7 @@ const DEFAULT_CERTS = [
   },
   {
     id: 'cert_2',
-    name: 'arcX Cyber Threat Intelligence 101',
+    name: 'Cyber Threat Intelligence 101',
     issuer: 'arcX',
     year: '2026',
     category: 'Security',
@@ -31,9 +31,11 @@ const DEFAULT_CERTS = [
     fileData: '', fileType: '',
     desc: 'Foundation course in cyber threat intelligence, threat hunting, and intelligence analysis methodologies.'
   },
+
+  // 2025 Certifications
   {
     id: 'cert_3',
-    name: 'Cyber Security Internship',
+    name: 'Cyber Security Industral Training',
     issuer: 'C9Labs - Pinak Infosec',
     year: '2025',
     category: 'Security',
@@ -54,32 +56,10 @@ const DEFAULT_CERTS = [
     desc: 'Core cybersecurity concepts including threat landscape, network security, and endpoint protection.'
   },
   {
-    id: 'cert_5',
-    name: 'Cybersecurity Essentials',
-    issuer: 'Cisco Networking Academy',
-    year: '2025',
-    category: 'Security',
-    link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/Cisco - Cybersecurity Essentials Certificate.png',
-    fileData: '', fileType: '',
-    desc: 'Foundational knowledge in cybersecurity operations, threat detection, and security best practices.'
-  },
-  {
-    id: 'cert_6',
-    name: 'Introduction to Cybersecurity',
-    issuer: 'Cisco Networking Academy',
-    year: '2025',
-    category: 'Security',
-    link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/Cisco - Introduction to Cybersecurity Certificate.png',
-    fileData: '', fileType: '',
-    desc: 'Entry-level course covering cybersecurity fundamentals, threats, and defensive strategies.'
-  },
-  {
     id: 'cert_7',
     name: 'Introduction to Cyber Security',
     issuer: 'TryHackMe',
-    year: '2024',
+    year: '2025',
     category: 'Security',
     link: '',
     image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/THM Introduction to Cyber Security Learning Path.png',
@@ -90,23 +70,12 @@ const DEFAULT_CERTS = [
     id: 'cert_8',
     name: 'PreSecurity Learning Path',
     issuer: 'TryHackMe',
-    year: '2024',
+    year: '2025',
     category: 'Security',
     link: '',
     image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/THM - PreSecurity Learning Path.png',
     fileData: '', fileType: '',
     desc: 'Foundational cybersecurity knowledge covering networking, Linux, and Windows basics.'
-  },
-  {
-    id: 'cert_9',
-    name: 'Ethical Hacking',
-    issuer: 'NPTEL',
-    year: '2024',
-    category: 'Security',
-    link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/Rudraksh NPTEL Exthical Hacking.png',
-    fileData: '', fileType: '',
-    desc: 'NPTEL course covering ethical hacking methodologies, tools, and legal frameworks.'
   },
   {
     id: 'cert_10',
@@ -119,8 +88,6 @@ const DEFAULT_CERTS = [
     fileData: '', fileType: '',
     desc: 'Digital forensics certification covering evidence collection, analysis, and triage procedures.'
   },
-
-  // OPSWAT Security Certifications
   {
     id: 'cert_11',
     name: 'Cybersecurity Fundamentals Associate (OCFA)',
@@ -187,13 +154,11 @@ const DEFAULT_CERTS = [
     fileData: '', fileType: '',
     desc: 'Storage security covering data protection, secure file transfers, and storage threat mitigation.'
   },
-
-  // Job Simulations & CTF
   {
     id: 'cert_17',
     name: 'Cybersecurity Job Simulation',
     issuer: 'Deloitte',
-    year: '2026',
+    year: '2025',
     category: 'Security',
     link: '',
     image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/Delloite_CyberSecurity_JobSimulation.png',
@@ -204,7 +169,7 @@ const DEFAULT_CERTS = [
     id: 'cert_18',
     name: 'Phishing Simulation & Analysis',
     issuer: 'Mastercard',
-    year: '2026',
+    year: '2025',
     category: 'Security',
     link: '',
     image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/MasterCard_Phishing_Simulation.png',
@@ -222,8 +187,6 @@ const DEFAULT_CERTS = [
     fileData: '', fileType: '',
     desc: 'Secured 2nd place at MP Police CTF competition covering web exploitation, forensics, and OSINT challenges.'
   },
-
-  // Machine Learning & Development
   {
     id: 'cert_20',
     name: 'Fundamentals of Deep Learning',
@@ -236,28 +199,6 @@ const DEFAULT_CERTS = [
     desc: 'Foundation course on neural networks, CNNs, transfer learning and deployment via NVIDIA frameworks.'
   },
   {
-    id: 'cert_21',
-    name: 'SQL (Basic)',
-    issuer: 'HackerRank',
-    year: '2025',
-    category: 'Development',
-    link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/HackerRank - SQL {Basic}.png',
-    fileData: '', fileType: '',
-    desc: 'SQL fundamentals covering queries, joins, aggregations, and basic database operations.'
-  },
-  {
-    id: 'cert_22',
-    name: 'SQL (Intermediate)',
-    issuer: 'HackerRank',
-    year: '2025',
-    category: 'Development',
-    link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/HackerRank - SQL {Intermediate}.png',
-    fileData: '', fileType: '',
-    desc: 'Advanced SQL covering subqueries, window functions, CTEs, and complex data manipulation.'
-  },
-  {
     id: 'cert_23',
     name: 'MATLAB Onramp',
     issuer: 'MathWorks',
@@ -268,42 +209,16 @@ const DEFAULT_CERTS = [
     fileData: '', fileType: '',
     desc: 'Introduction to MATLAB covering data analysis, visualization, and programming fundamentals.'
   },
-
-  // Networking
-  {
-    id: 'cert_24',
-    name: 'Introduction to Packet Tracer',
-    issuer: 'Cisco Networking Academy',
-    year: '2025',
-    category: 'Networking',
-    link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/Cisco - Introduction to Packet Tracer Certificate.png',
-    fileData: '', fileType: '',
-    desc: 'Network simulation and configuration using Cisco Packet Tracer for hands-on learning.'
-  },
   {
     id: 'cert_25',
     name: 'Introduction to IoT',
     issuer: 'NPTEL',
-    year: '2024',
+    year: '2025',
     category: 'Networking',
     link: '',
     image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/NPTEL IOT.png',
     fileData: '', fileType: '',
     desc: 'Overview of Internet of Things architecture, protocols, and security considerations.'
-  },
-
-  // Copyrights
-  {
-    id: 'cert_26',
-    name: 'Copyright: URJAA ROOPANTARAN',
-    issuer: 'Government of India',
-    year: '2025',
-    category: 'Other',
-    link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/COPYRIGHT - URJAA ROOPANTARAN.png',
-    fileData: '', fileType: '',
-    desc: 'Copyright registration for original work: URJAA ROOPANTARAN energy transformation project.'
   },
   {
     id: 'cert_27',
@@ -317,12 +232,89 @@ const DEFAULT_CERTS = [
     desc: 'Copyright for innovative laser-based metal 3D printing enhancement methodology.'
   },
 
-  // Competitions
+  // 2024 Certifications
+  {
+    id: 'cert_5',
+    name: 'Cybersecurity Essentials',
+    issuer: 'Cisco Networking Academy',
+    year: '2024',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/Cisco - Cybersecurity Essentials Certificate.png',
+    fileData: '', fileType: '',
+    desc: 'Foundational knowledge in cybersecurity operations, threat detection, and security best practices.'
+  },
+  {
+    id: 'cert_6',
+    name: 'Introduction to Cybersecurity',
+    issuer: 'Cisco Networking Academy',
+    year: '2024',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/Cisco - Introduction to Cybersecurity Certificate.png',
+    fileData: '', fileType: '',
+    desc: 'Entry-level course covering cybersecurity fundamentals, threats, and defensive strategies.'
+  },
+  {
+    id: 'cert_9',
+    name: 'Ethical Hacking',
+    issuer: 'NPTEL',
+    year: '2024',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/Rudraksh NPTEL Exthical Hacking.png',
+    fileData: '', fileType: '',
+    desc: 'NPTEL course covering ethical hacking methodologies, tools, and legal frameworks.'
+  },
+  {
+    id: 'cert_21',
+    name: 'SQL (Basic)',
+    issuer: 'HackerRank',
+    year: '2024',
+    category: 'Development',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/HackerRank - SQL {Basic}.png',
+    fileData: '', fileType: '',
+    desc: 'SQL fundamentals covering queries, joins, aggregations, and basic database operations.'
+  },
+  {
+    id: 'cert_22',
+    name: 'SQL (Intermediate)',
+    issuer: 'HackerRank',
+    year: '2024',
+    category: 'Development',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/HackerRank - SQL {Intermediate}.png',
+    fileData: '', fileType: '',
+    desc: 'Advanced SQL covering subqueries, window functions, CTEs, and complex data manipulation.'
+  },
+  {
+    id: 'cert_24',
+    name: 'Introduction to Packet Tracer',
+    issuer: 'Cisco Networking Academy',
+    year: '2024',
+    category: 'Networking',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/Cisco - Introduction to Packet Tracer Certificate.png',
+    fileData: '', fileType: '',
+    desc: 'Network simulation and configuration using Cisco Packet Tracer for hands-on learning.'
+  },
+  {
+    id: 'cert_26',
+    name: 'Copyright: URJAA ROOPANTARAN',
+    issuer: 'Government of India',
+    year: '2024',
+    category: 'Other',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/COPYRIGHT - URJAA ROOPANTARAN.png',
+    fileData: '', fileType: '',
+    desc: 'Copyright registration for original work: URJAA ROOPANTARAN energy transformation project.'
+  },
   {
     id: 'cert_28',
     name: 'Techathon 1.0',
     issuer: 'Technical Competition',
-    year: '2025',
+    year: '2024',
     category: 'Other',
     link: '',
     image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/Techathon 1.0.jpeg',
