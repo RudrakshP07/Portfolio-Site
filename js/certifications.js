@@ -16,7 +16,7 @@ const DEFAULT_CERTS = [
     year: '2026',
     category: 'Security',
     link: 'https://tryhackme.com',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/TryHackMe JPT Path.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/TryHackMe JPT Path.png',
     fileData: '', fileType: '',
     desc: 'Comprehensive penetration testing path covering network, web app, and system exploitation fundamentals.'
   },
@@ -27,7 +27,7 @@ const DEFAULT_CERTS = [
     year: '2026',
     category: 'Security',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/arcX Cyber Threat Intelligence 101.jpg',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/arcX Cyber Threat Intelligence 101.jpg',
     fileData: '', fileType: '',
     desc: 'Foundation course in cyber threat intelligence, threat hunting, and intelligence analysis methodologies.'
   },
@@ -38,7 +38,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Security',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/C9labs Industral Training Cyber Security.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/C9labs Industral Training Cyber Security.png',
     fileData: '', fileType: '',
     desc: 'Industrial training covering VAPT, dark web monitoring, manual testing, and security automation.'
   },
@@ -49,7 +49,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Security',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/PaloAlto Cybersecurity Foundation.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/PaloAlto Cybersecurity Foundation.png',
     fileData: '', fileType: '',
     desc: 'Core cybersecurity concepts including threat landscape, network security, and endpoint protection.'
   },
@@ -60,7 +60,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Security',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/Cisco - Cybersecurity Essentials Certificate.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/Cisco - Cybersecurity Essentials Certificate.png',
     fileData: '', fileType: '',
     desc: 'Foundational knowledge in cybersecurity operations, threat detection, and security best practices.'
   },
@@ -71,7 +71,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Security',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/Cisco - Introduction to Cybersecurity Certificate.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/Cisco - Introduction to Cybersecurity Certificate.png',
     fileData: '', fileType: '',
     desc: 'Entry-level course covering cybersecurity fundamentals, threats, and defensive strategies.'
   },
@@ -82,7 +82,7 @@ const DEFAULT_CERTS = [
     year: '2024',
     category: 'Security',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/THM Introduction to Cyber Security Learning Path.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/THM Introduction to Cyber Security Learning Path.png',
     fileData: '', fileType: '',
     desc: 'Entry-level offensive and defensive security fundamentals on TryHackMe platform.'
   },
@@ -93,7 +93,7 @@ const DEFAULT_CERTS = [
     year: '2024',
     category: 'Security',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/THM - PreSecurity Learning Path.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/THM - PreSecurity Learning Path.png',
     fileData: '', fileType: '',
     desc: 'Foundational cybersecurity knowledge covering networking, Linux, and Windows basics.'
   },
@@ -104,7 +104,7 @@ const DEFAULT_CERTS = [
     year: '2024',
     category: 'Security',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/Rudraksh NPTEL Exthical Hacking.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/Rudraksh NPTEL Exthical Hacking.png',
     fileData: '', fileType: '',
     desc: 'NPTEL course covering ethical hacking methodologies, tools, and legal frameworks.'
   },
@@ -115,7 +115,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Security',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/PassMark Software - OSForensics Triage Certification.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/PassMark Software - OSForensics Triage Certification.png',
     fileData: '', fileType: '',
     desc: 'Digital forensics certification covering evidence collection, analysis, and triage procedures.'
   },
@@ -128,7 +128,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Security',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/OPSWAT - OCFA (Cybersecurity Fundamentals Associate).png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/OPSWAT - OCFA (Cybersecurity Fundamentals Associate).png',
     fileData: '', fileType: '',
     desc: 'Foundational cybersecurity knowledge covering threats, vulnerabilities, and security controls.'
   },
@@ -139,7 +139,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Security',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/OPSWAT - ICIP {Introduction to Critical Infrastructure Protection}.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/OPSWAT - ICIP {Introduction to Critical Infrastructure Protection}.png',
     fileData: '', fileType: '',
     desc: 'Critical infrastructure security covering OT/ICS environments and protection strategies.'
   },
@@ -150,7 +150,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Security',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/OPSWAT - OFSA (File Security Assosiate).png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/OPSWAT - OFSA (File Security Assosiate).png',
     fileData: '', fileType: '',
     desc: 'File security fundamentals covering malware detection, sanitization, and deep content inspection.'
   },
@@ -161,7 +161,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Security',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/OPSWAT - OESA (Email Security Assosiate).png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/OPSWAT - OESA (Email Security Assosiate).png',
     fileData: '', fileType: '',
     desc: 'Email security best practices covering phishing, malware, and social engineering threats.'
   },
@@ -172,7 +172,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Security',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/OPSWAT - ONSA (Network Security Assosiate).png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/OPSWAT - ONSA (Network Security Assosiate).png',
     fileData: '', fileType: '',
     desc: 'Network security fundamentals covering firewalls, IDS/IPS, and network threat detection.'
   },
@@ -183,7 +183,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Security',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/OSSA.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/OSSA.png',
     fileData: '', fileType: '',
     desc: 'Storage security covering data protection, secure file transfers, and storage threat mitigation.'
   },
@@ -196,7 +196,7 @@ const DEFAULT_CERTS = [
     year: '2026',
     category: 'Security',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/Delloite_CyberSecurity_JobSimulation.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/Delloite_CyberSecurity_JobSimulation.png',
     fileData: '', fileType: '',
     desc: 'Practical cybersecurity simulation covering threat analysis, incident response, and security advisory.'
   },
@@ -207,7 +207,7 @@ const DEFAULT_CERTS = [
     year: '2026',
     category: 'Security',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/MasterCard_Phishing_Simulation.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/MasterCard_Phishing_Simulation.png',
     fileData: '', fileType: '',
     desc: 'Phishing detection, analysis, and mitigation simulation for real-world security scenarios.'
   },
@@ -218,7 +218,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Security',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/CYBERHACK-2025.jpg',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/CYBERHACK-2025.jpg',
     fileData: '', fileType: '',
     desc: 'Secured 2nd place at MP Police CTF competition covering web exploitation, forensics, and OSINT challenges.'
   },
@@ -231,7 +231,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Machine Learning',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/NVDIA Fundamentels of Deep Learning.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/NVDIA Fundamentels of Deep Learning.png',
     fileData: '', fileType: '',
     desc: 'Foundation course on neural networks, CNNs, transfer learning and deployment via NVIDIA frameworks.'
   },
@@ -242,7 +242,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Development',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/HackerRank - SQL {Basic}.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/HackerRank - SQL {Basic}.png',
     fileData: '', fileType: '',
     desc: 'SQL fundamentals covering queries, joins, aggregations, and basic database operations.'
   },
@@ -253,7 +253,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Development',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/HackerRank - SQL {Intermediate}.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/HackerRank - SQL {Intermediate}.png',
     fileData: '', fileType: '',
     desc: 'Advanced SQL covering subqueries, window functions, CTEs, and complex data manipulation.'
   },
@@ -264,7 +264,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Development',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/Matlab Onramp Rudra Potghan.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/Matlab Onramp Rudra Potghan.png',
     fileData: '', fileType: '',
     desc: 'Introduction to MATLAB covering data analysis, visualization, and programming fundamentals.'
   },
@@ -277,7 +277,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Networking',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/Cisco - Introduction to Packet Tracer Certificate.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/Cisco - Introduction to Packet Tracer Certificate.png',
     fileData: '', fileType: '',
     desc: 'Network simulation and configuration using Cisco Packet Tracer for hands-on learning.'
   },
@@ -288,7 +288,7 @@ const DEFAULT_CERTS = [
     year: '2024',
     category: 'Networking',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/NPTEL IOT.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/NPTEL IOT.png',
     fileData: '', fileType: '',
     desc: 'Overview of Internet of Things architecture, protocols, and security considerations.'
   },
@@ -301,7 +301,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Other',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/COPYRIGHT - URJAA ROOPANTARAN.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/COPYRIGHT - URJAA ROOPANTARAN.png',
     fileData: '', fileType: '',
     desc: 'Copyright registration for original work: URJAA ROOPANTARAN energy transformation project.'
   },
@@ -312,7 +312,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Other',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/COPYRIGHT - FLUX INFUSED DIRECT DEPOSITION ENHANCEMENT LASER BASED METAL 3D PRINTING.png',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/COPYRIGHT - FLUX INFUSED DIRECT DEPOSITION ENHANCEMENT LASER BASED METAL 3D PRINTING.png',
     fileData: '', fileType: '',
     desc: 'Copyright for innovative laser-based metal 3D printing enhancement methodology.'
   },
@@ -325,7 +325,7 @@ const DEFAULT_CERTS = [
     year: '2025',
     category: 'Other',
     link: '',
-    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/Techathon 1.0.jpeg',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/Techathon 1.0.jpeg',
     fileData: '', fileType: '',
     desc: 'Participation certificate for Techathon 1.0 technical innovation competition.'
   }
