@@ -8,41 +8,326 @@ const STORE_KEY  = 'rp_certs_v2';
 
 // Pre-loaded from resume
 const DEFAULT_CERTS = [
+  // Security Certifications
   {
-    id: 'cert_1', name: 'Jr. Penetration Tester Path', issuer: 'TryHackMe',
-    year: '2026', category: 'Security',
-    link: 'https://tryhackme.com', image: '', fileData: '', fileType: '',
+    id: 'cert_1',
+    name: 'Jr. Penetration Tester Path',
+    issuer: 'TryHackMe',
+    year: '2026',
+    category: 'Security',
+    link: 'https://tryhackme.com',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/TryHackMe JPT Path.png',
+    fileData: '', fileType: '',
     desc: 'Comprehensive penetration testing path covering network, web app, and system exploitation fundamentals.'
   },
   {
-    id: 'cert_2', name: 'Fundamentals of Deep Learning', issuer: 'NVIDIA',
-    year: '2025', category: 'Machine Learning',
-    link: '', image: '', fileData: '', fileType: '',
-    desc: 'Foundation course on neural networks, CNNs, transfer learning and deployment via NVIDIA frameworks.'
+    id: 'cert_2',
+    name: 'arcX Cyber Threat Intelligence 101',
+    issuer: 'arcX',
+    year: '2026',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/arcX Cyber Threat Intelligence 101.jpg',
+    fileData: '', fileType: '',
+    desc: 'Foundation course in cyber threat intelligence, threat hunting, and intelligence analysis methodologies.'
   },
   {
-    id: 'cert_3', name: 'Cybersecurity Foundation', issuer: 'Palo Alto Networks',
-    year: '2025', category: 'Security',
-    link: '', image: '', fileData: '', fileType: '',
+    id: 'cert_3',
+    name: 'Cyber Security Internship',
+    issuer: 'C9Labs - Pinak Infosec',
+    year: '2025',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/C9labs Industral Training Cyber Security.png',
+    fileData: '', fileType: '',
+    desc: 'Industrial training covering VAPT, dark web monitoring, manual testing, and security automation.'
+  },
+  {
+    id: 'cert_4',
+    name: 'Cybersecurity Foundation',
+    issuer: 'Palo Alto Networks',
+    year: '2025',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/PaloAlto Cybersecurity Foundation.png',
+    fileData: '', fileType: '',
     desc: 'Core cybersecurity concepts including threat landscape, network security, and endpoint protection.'
   },
   {
-    id: 'cert_4', name: 'Ethical Hacking', issuer: 'NPTEL',
-    year: '2024', category: 'Security',
-    link: '', image: '', fileData: '', fileType: '',
-    desc: 'NPTEL course covering ethical hacking methodologies, tools, and legal frameworks.'
+    id: 'cert_5',
+    name: 'Cybersecurity Essentials',
+    issuer: 'Cisco Networking Academy',
+    year: '2025',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/Cisco - Cybersecurity Essentials Certificate.png',
+    fileData: '', fileType: '',
+    desc: 'Foundational knowledge in cybersecurity operations, threat detection, and security best practices.'
   },
   {
-    id: 'cert_5', name: 'Introduction to Cyber Security', issuer: 'TryHackMe',
-    year: '2024', category: 'Security',
-    link: '', image: '', fileData: '', fileType: '',
+    id: 'cert_6',
+    name: 'Introduction to Cybersecurity',
+    issuer: 'Cisco Networking Academy',
+    year: '2025',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/Cisco - Introduction to Cybersecurity Certificate.png',
+    fileData: '', fileType: '',
+    desc: 'Entry-level course covering cybersecurity fundamentals, threats, and defensive strategies.'
+  },
+  {
+    id: 'cert_7',
+    name: 'Introduction to Cyber Security',
+    issuer: 'TryHackMe',
+    year: '2024',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/THM Introduction to Cyber Security Learning Path.png',
+    fileData: '', fileType: '',
     desc: 'Entry-level offensive and defensive security fundamentals on TryHackMe platform.'
   },
   {
-    id: 'cert_6', name: 'Introduction to IoT', issuer: 'NPTEL',
-    year: '2024', category: 'Networking',
-    link: '', image: '', fileData: '', fileType: '',
+    id: 'cert_8',
+    name: 'PreSecurity Learning Path',
+    issuer: 'TryHackMe',
+    year: '2024',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/THM - PreSecurity Learning Path.png',
+    fileData: '', fileType: '',
+    desc: 'Foundational cybersecurity knowledge covering networking, Linux, and Windows basics.'
+  },
+  {
+    id: 'cert_9',
+    name: 'Ethical Hacking',
+    issuer: 'NPTEL',
+    year: '2024',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/Rudraksh NPTEL Exthical Hacking.png',
+    fileData: '', fileType: '',
+    desc: 'NPTEL course covering ethical hacking methodologies, tools, and legal frameworks.'
+  },
+  {
+    id: 'cert_10',
+    name: 'OSForensics Triage Certification',
+    issuer: 'PassMark Software',
+    year: '2025',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/PassMark Software - OSForensics Triage Certification.png',
+    fileData: '', fileType: '',
+    desc: 'Digital forensics certification covering evidence collection, analysis, and triage procedures.'
+  },
+
+  // OPSWAT Security Certifications
+  {
+    id: 'cert_11',
+    name: 'Cybersecurity Fundamentals Associate (OCFA)',
+    issuer: 'OPSWAT',
+    year: '2025',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/OPSWAT - OCFA (Cybersecurity Fundamentals Associate).png',
+    fileData: '', fileType: '',
+    desc: 'Foundational cybersecurity knowledge covering threats, vulnerabilities, and security controls.'
+  },
+  {
+    id: 'cert_12',
+    name: 'Introduction to Critical Infrastructure Protection (ICIP)',
+    issuer: 'OPSWAT',
+    year: '2025',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/OPSWAT - ICIP {Introduction to Critical Infrastructure Protection}.png',
+    fileData: '', fileType: '',
+    desc: 'Critical infrastructure security covering OT/ICS environments and protection strategies.'
+  },
+  {
+    id: 'cert_13',
+    name: 'File Security Associate (OFSA)',
+    issuer: 'OPSWAT',
+    year: '2025',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/OPSWAT - OFSA (File Security Assosiate).png',
+    fileData: '', fileType: '',
+    desc: 'File security fundamentals covering malware detection, sanitization, and deep content inspection.'
+  },
+  {
+    id: 'cert_14',
+    name: 'Email Security Associate (OESA)',
+    issuer: 'OPSWAT',
+    year: '2025',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/OPSWAT - OESA (Email Security Assosiate).png',
+    fileData: '', fileType: '',
+    desc: 'Email security best practices covering phishing, malware, and social engineering threats.'
+  },
+  {
+    id: 'cert_15',
+    name: 'Network Security Associate (ONSA)',
+    issuer: 'OPSWAT',
+    year: '2025',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/OPSWAT - ONSA (Network Security Assosiate).png',
+    fileData: '', fileType: '',
+    desc: 'Network security fundamentals covering firewalls, IDS/IPS, and network threat detection.'
+  },
+  {
+    id: 'cert_16',
+    name: 'Storage Security Associate (OSSA)',
+    issuer: 'OPSWAT',
+    year: '2025',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/OSSA.png',
+    fileData: '', fileType: '',
+    desc: 'Storage security covering data protection, secure file transfers, and storage threat mitigation.'
+  },
+
+  // Job Simulations & CTF
+  {
+    id: 'cert_17',
+    name: 'Cybersecurity Job Simulation',
+    issuer: 'Deloitte',
+    year: '2026',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/Delloite_CyberSecurity_JobSimulation.png',
+    fileData: '', fileType: '',
+    desc: 'Practical cybersecurity simulation covering threat analysis, incident response, and security advisory.'
+  },
+  {
+    id: 'cert_18',
+    name: 'Phishing Simulation & Analysis',
+    issuer: 'Mastercard',
+    year: '2026',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/MasterCard_Phishing_Simulation.png',
+    fileData: '', fileType: '',
+    desc: 'Phishing detection, analysis, and mitigation simulation for real-world security scenarios.'
+  },
+  {
+    id: 'cert_19',
+    name: 'CYBERHACK-2025 (2nd Place)',
+    issuer: 'MP Police',
+    year: '2025',
+    category: 'Security',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/CYBERHACK-2025.jpg',
+    fileData: '', fileType: '',
+    desc: 'Secured 2nd place at MP Police CTF competition covering web exploitation, forensics, and OSINT challenges.'
+  },
+
+  // Machine Learning & Development
+  {
+    id: 'cert_20',
+    name: 'Fundamentals of Deep Learning',
+    issuer: 'NVIDIA',
+    year: '2025',
+    category: 'Machine Learning',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/NVDIA Fundamentels of Deep Learning.png',
+    fileData: '', fileType: '',
+    desc: 'Foundation course on neural networks, CNNs, transfer learning and deployment via NVIDIA frameworks.'
+  },
+  {
+    id: 'cert_21',
+    name: 'SQL (Basic)',
+    issuer: 'HackerRank',
+    year: '2025',
+    category: 'Development',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/HackerRank - SQL {Basic}.png',
+    fileData: '', fileType: '',
+    desc: 'SQL fundamentals covering queries, joins, aggregations, and basic database operations.'
+  },
+  {
+    id: 'cert_22',
+    name: 'SQL (Intermediate)',
+    issuer: 'HackerRank',
+    year: '2025',
+    category: 'Development',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/HackerRank - SQL {Intermediate}.png',
+    fileData: '', fileType: '',
+    desc: 'Advanced SQL covering subqueries, window functions, CTEs, and complex data manipulation.'
+  },
+  {
+    id: 'cert_23',
+    name: 'MATLAB Onramp',
+    issuer: 'MathWorks',
+    year: '2025',
+    category: 'Development',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/Matlab Onramp Rudra Potghan.png',
+    fileData: '', fileType: '',
+    desc: 'Introduction to MATLAB covering data analysis, visualization, and programming fundamentals.'
+  },
+
+  // Networking
+  {
+    id: 'cert_24',
+    name: 'Introduction to Packet Tracer',
+    issuer: 'Cisco Networking Academy',
+    year: '2025',
+    category: 'Networking',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/Cisco - Introduction to Packet Tracer Certificate.png',
+    fileData: '', fileType: '',
+    desc: 'Network simulation and configuration using Cisco Packet Tracer for hands-on learning.'
+  },
+  {
+    id: 'cert_25',
+    name: 'Introduction to IoT',
+    issuer: 'NPTEL',
+    year: '2024',
+    category: 'Networking',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/NPTEL IOT.png',
+    fileData: '', fileType: '',
     desc: 'Overview of Internet of Things architecture, protocols, and security considerations.'
+  },
+
+  // Copyrights
+  {
+    id: 'cert_26',
+    name: 'Copyright: URJAA ROOPANTARAN',
+    issuer: 'Government of India',
+    year: '2025',
+    category: 'Other',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/COPYRIGHT - URJAA ROOPANTARAN.png',
+    fileData: '', fileType: '',
+    desc: 'Copyright registration for original work: URJAA ROOPANTARAN energy transformation project.'
+  },
+  {
+    id: 'cert_27',
+    name: 'Copyright: FIDDE (Flux Infused Direct Deposition)',
+    issuer: 'Government of India',
+    year: '2025',
+    category: 'Other',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/COPYRIGHT - FLUX INFUSED DIRECT DEPOSITION ENHANCEMENT LASER BASED METAL 3D PRINTING.png',
+    fileData: '', fileType: '',
+    desc: 'Copyright for innovative laser-based metal 3D printing enhancement methodology.'
+  },
+
+  // Competitions
+  {
+    id: 'cert_28',
+    name: 'Techathon 1.0',
+    issuer: 'Technical Competition',
+    year: '2025',
+    category: 'Other',
+    link: '',
+    image: 'https://rudrakshp07.github.io/Portfolio-Site/images/Techathon 1.0.jpeg',
+    fileData: '', fileType: '',
+    desc: 'Participation certificate for Techathon 1.0 technical innovation competition.'
   }
 ];
 
