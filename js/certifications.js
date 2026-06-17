@@ -320,6 +320,18 @@ const DEFAULT_CERTS = [
     image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/Techathon 1.0.jpeg',
     fileData: '', fileType: '',
     desc: 'Participation certificate for Techathon 1.0 technical innovation competition.'
+  },
+  {
+     id: 'cert_29',
+     name: 'ISO/IEC 27001:2022 Lead Auditor',
+     issuer: 'Mastermind Assurance',
+     year: '2026',
+     category: 'Security',
+     link: 'https://learn.mastermindassurance.com',
+     image: 'https://rudrakshp07.github.io/Portfolio-Site/css/Images/Mastermind%20ISO%2027001%20Lead%20Auditor%20.png',
+     fileData: '',
+     fileType: '',
+     desc: 'Completed ISO/IEC 27001:2022 Lead Auditor training and competency examination covering ISMS auditing principles, risk assessment, compliance evaluation, audit planning, and information security governance.' 
   }
 ];
 
